@@ -1,0 +1,13 @@
+package com.shop2.myapp.config;
+
+@SuppressWarnings("deprecation")
+@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration {
+	//spring-security 기능 비활성화
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/**").permitAll();
+    }
+
+}

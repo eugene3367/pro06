@@ -1,0 +1,16 @@
+package com.shop2.myapp.dto;
+
+public class SampleDTO {
+	private String id;
+	private String pw;
+	private long vcnt;
+	
+	public SampleDTO(String id, String pw, long vcnt) {
+		this.id = id;
+		this.pw = pw;
+		this.vcnt = vcnt;
+	}
+	
+	
+
+}

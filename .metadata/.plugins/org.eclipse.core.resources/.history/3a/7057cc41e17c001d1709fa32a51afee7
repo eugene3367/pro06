@@ -1,0 +1,8 @@
+package com.shop2.myapp.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MybatisConfig {
+
+}

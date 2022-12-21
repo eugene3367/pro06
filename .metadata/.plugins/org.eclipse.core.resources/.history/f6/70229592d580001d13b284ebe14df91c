@@ -1,0 +1,9 @@
+package com.shop2.myapp.dto;
+
+public class UserDTO {
+	
+	private String id;
+	private String pw;
+	
+
+}

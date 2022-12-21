@@ -1,0 +1,17 @@
+
+# server setting
+server.port = 8096
+
+# postgresql setting
+spring.datasource.url=jdbc:postgresql://localhost:5432/myshop
+spring.datasource.username=postgres
+spring.datasource.password=1234
+spring.datasource.platform=postgres
+
+
+# thymeleaf setting
+spring.thymeleaf.cache=false
+
+# mybatis setting
+mybatis.type-aliases-package:com.shop2.myapp.model
+mybatis.mapper-locations: mybatis/mapper/**/*Mapper.xml

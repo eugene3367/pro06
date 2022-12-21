@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.shop2.myapp.model.Samplemapper&apos; to &apos;SampleMapper&apos;&#x0D;&#x0A;- Original project: &apos;myapp&apos;&#x0D;&#x0A;- Original element: &apos;com.shop2.myapp.model.Samplemapper&apos;&#x0D;&#x0A;- Renamed element: &apos;com.shop2.myapp.model.SampleMapper&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Samplemapper&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shop2.myapp.model{Samplemapper.java[Samplemapper" matchStrategy="1" name="SampleMapper" qualified="false" references="true" similarDeclarations="false" stamp="1671156562334" textual="false" version="1.0"/>
+</session>
