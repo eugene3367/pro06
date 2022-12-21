@@ -33,9 +33,9 @@ public class AjaxController {
 	}
 	
 	
-	@PostMapping("idCheck.do")
+	@GetMapping("idCheck.do")
 	@ResponseBody
-	public boolean idCheck(@RequestParam("id") String id, Model model) throws Exception {
+	public boolean idCheck(@RequestParam("id") String id) throws Exception {
 		UserDTO user = ajaxService.getUser(id);
 		if(user==null) {
 			return true;

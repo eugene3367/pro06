@@ -42,19 +42,19 @@
 				}
 				
 				$.ajax({
-					url:"/ajax/idCheck.do",
-					data:id,
+					url:"/ajax/idCheck.do?id="+id,
+					//data:id,
 					contentType:'application/json;charset=utf-8',
-					method:"POST",
+					method:"GET",
 					dataType:"json"
 				})				
 				.done(function(res){
 					console.log(res);
 					if(res===true){
-						$("#msg").text("확인")	
+						$("#msg").text("사용가능")	
 						$("#idck").val("yes")					
 					} else {
-						$("#msg").text("오잉")
+						$("#msg").text("현재 사용중")
 					}
 				})
 				.fail(function(xhr, status, errorThrown){
