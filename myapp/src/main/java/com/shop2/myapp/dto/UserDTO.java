@@ -1,77 +1,29 @@
 package com.shop2.myapp.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO {
-	
-	private String id;
-	private String pw;
+	private String id; 
+	private String pw;  
 	private String name;
 	private String email;
-	private String tel;
+	private String tel; 
+	private String addr1;
+	private String addr2;
+	private String postcode;
 	private String regdate;
+	private String birth;
+	private int pt;
+	private int visited;
 	
-	public UserDTO(String id, String pw, String name, String email, String tel, String regdate) {
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.email = email;
-		this.tel = tel;
-		this.regdate = regdate;
-	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPw() {
-		return pw;
-	}
-
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	public String getRegdate() {
-		return regdate;
-	}
-
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
-	}
-
-	@Override
-	public String toString() {
-		return "UserDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", tel=" + tel
-				+ ", regdate=" + regdate + "]";
-	}
+	
+	
 	
 	
 

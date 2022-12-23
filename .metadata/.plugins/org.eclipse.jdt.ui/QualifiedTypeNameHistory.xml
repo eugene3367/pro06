@@ -3,4 +3,7 @@
     <fullyQualifiedTypeName name="org.springframework.core.io.Resource"/>
     <fullyQualifiedTypeName name="com.shop2.myapp.service.SampleService"/>
     <fullyQualifiedTypeName name="com.shop2.myapp.service.AjaxService"/>
+    <fullyQualifiedTypeName name="org.slf4j.Logger"/>
+    <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+    <fullyQualifiedTypeName name="com.shop2.myapp.service.UserService"/>
 </qualifiedTypeNameHistroy>
