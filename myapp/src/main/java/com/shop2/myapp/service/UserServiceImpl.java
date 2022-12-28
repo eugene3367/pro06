@@ -1,5 +1,7 @@
 package com.shop2.myapp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,21 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserMapper userMapper;
+	
+	@Override
+	public List<UserDTO> userList() throws Exception {
+		return userMapper.userList();
+	}
+
+	@Override
+	public UserDTO getUser(String id) throws Exception {
+		return userMapper.getUser(id);
+	}
+
+	@Override
+	public UserDTO getLogin(String id, String pw) throws Exception {
+		return userMapper.getLogin(id, pw);
+	}
 
 	@Override
 	public void addUser(UserDTO user) throws Exception {

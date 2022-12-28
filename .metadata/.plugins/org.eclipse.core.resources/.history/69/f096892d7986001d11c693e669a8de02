@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header id="header">
+	<nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container px-8">
+            <img src="img/main/logo.svg" alt="" style="width: 150px; height: auto;"><a class="navbar-brand" href="/"></a></img>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> SHOP</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@{/board/list}">Ready to wear</a></li>
+                            <li><a class="dropdown-item" href="@{/qna/list}">Bags</a></li>
+                            <li><a class="dropdown-item" href="@{/review/list}">Shoes</a></li>
+                            <li><a class="dropdown-item" href="@{/review/list}">Accessories</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">BRAND</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@{/board/list}">GRACE U</a></li>
+                            <li><a class="dropdown-item" href="@{/qna/list}">Stockiests</a></li>
+                        </ul>
+                    </li>      
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">STORY</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@{/board/list}">Press</a></li>
+                            <li><a class="dropdown-item" href="@{/qna/list}">Celeb</a></li>
+                            <li><a class="dropdown-item" href="@{/review/list}">Event</a></li>
+                        </ul>
+                    </li>                          
+                    <li class="nav-item"><a class="nav-link" href="index.html">COLLECTION</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Community</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@{/board/list}">Notice</a></li>
+                            <li><a class="dropdown-item" href="@{/qna/list}">QnA</a></li>
+                            <li><a class="dropdown-item" href="@{/review/list}">Review</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+<!--			    	<li class="nav-item"><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/signUp}">회원가입</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/info}">내정보</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="hasRole('ADMIN')" th:href="@{/member/admin}">어드민</a></li>-->
+			<div th:fragment="tnb" id="tnb" class="collapse navbar-collapse">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+			    	<li class="nav-item"><a class="nav-link" th:if="${sid == null}" th:href="@{/user/login}">로그인</a></li>
+				    <li class="nav-item"><a class="nav-link" th:if="${sid == null}" th:href="@{/user/agree}">회원가입</a></li>
+				</ul>    
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">				    
+				    <li class="nav-item"><a class="nav-link" th:if="${sid != null}" th:href="@{/member/logout}">로그아웃</a></li>
+				    <li class="nav-item"><a class="nav-link" th:if="${sid != null}" th:href="@{/member/info}">내정보</a></li>
+				</ul>    
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">					    
+				    <li class="nav-item"><a class="nav-link" th:if="${sid == 'admin'}" th:href="@{/member/admin}">어드민</a></li>
+				</ul>
+			</div>
+        </div>
+    </nav>
+</header>
+<hr>

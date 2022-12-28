@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>회원가입</title>
+	<th:block th:insert="common/head"></th:block>
+</head>
+<body>
+<div class="fluid-container">
+	<th:block th:insert="common/header"></th:block>
+	<div class="container">
+        <h2>회원 가입</h2>
+        <br><hr><br>
+        <article class="data">
+		    <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Quick Example</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form th:action="@{/ajax/addUser.do}">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="id">아이디</label>
+                    <input type="text" class="form-control" name="id" id="id" placeholder="아이디 입력" required >
+      				<input type="button" id="idCkBtn" class="button" value="아이디 중복 체크" onclick="idCheck()">
+      				<input type="hidden" name="idck" id="idck" value="no"/>    
+					<p th:if="${sid == null }" id="msg" style="padding-left:0.5rem">아직 아이디 중복 체크를 하지 않으셨습니다.</p>
+					<p th:if="${sid != null}" id="msg" style="padding-left:0.5rem">아이디 중복 체크후 수정하였습니다.</p>
+				                   
+                  </div>
+                  <div class="form-group">
+                    <label for="pw">비밀번호</label>
+                    <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호 입력" maxlength="12" required>                
+                  </div>
+                  <div class="form-group">
+                    <label for="pw2">비밀번호 확인</label>
+                    <input type="password" class="form-control" name="pw2" id="pw2" placeholder="비밀번호 확인 입력" maxlength="12" required>                
+                  </div>          
+                  <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="이름 입력" maxlength="40" required>                
+                  </div>                       
+                  <div class="form-group">
+                    <label for="birth">생년월일</label>
+                    <input type="date" class="form-control" name="birth" id="birth" placeholder="생년월일 입력" required>                
+                  </div>  
+                  <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="이메일 입력" maxlength="80" required>                
+                  </div>    
+                  <div class="form-group">
+                    <label for="tel">전화번호</label>
+                    <input type="tel" class="form-control" name="tel" id="tel" placeholder="전화번호 입력" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="19" required>                
+                  </div> 
+                  <div class="form-group">
+                    <label for="addr1">주소</label>
+                    <input type="text" class="form-control" name="addr1" id="addr1" placeholder="기본주소 입력" maxlength="150" required><br><br>         
+					<input type="text" class="form-control" name="addr2" id="addr2" placeholder="상세주소 입력" maxlength="90" required><br><br>
+      				<input type="text" name="postcode" id="postcode" placeholder="우편번호 입력" maxlength="9" required>
+      				<input type="button" id="isAddrBtn" class="button" value="주소 입력" onclick="findAddr()">
+      				<input type="hidden" name="addrck" id="addrck" value="no"/>					                    
+                  </div>                                                                                       
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-info">Submit</button>
+                  <button type="reset" class="btn btn-info">취소</button>
+                </div>
+              </form>
+            </div>           
+			
+			   	<script>
+				$(document).ready(function(){
+					$("#id").keyup(function(){
+						$("#idck").val("no");
+						if($(this).val()!=""){
+							$("#msg").html("<strong>아이디 입력중입니다.</strong>");
+						} else {
+							$("#msg").html("아직 아이디 중복 체크를 하지 않으셨습니다.");
+						}
+					});
+				});
+				</script>
+				<script>
+				function idCheck(){
+					if($("#id").val()==""){
+						alert("아이디를 입력하지 않으셨습니다.");
+						$("#id").focus();
+						return;
+					} 
+					var params = {	id : $("#id").val()	} //전송되어질 데이터를 객체로 묶음
+					$.ajax({
+		                url:"/user/idCheck.do?id="+id,     //요청 데이터를 받아 처리하는 서버측 컨트롤러 또는 페이지 주소
+		                //data:id,      //post 방식으로 서버로 전송할 데이터 - string 또는 object
+		                contentType:'application/json;charset=utf-8',
+		                method:"GET",   //전송 방식 : post, get, put
+		                dataType:"json" //반환받을 데이터 타입 - json, xml, script, html				
+
+					});
+		            .done(function(res){ //요청 처리에 대한 성공시 처리할 문장
+		                console.log(res);
+		                if(res===true){
+							$("#msg").text("사용가능한 아이디입니다.");
+							$("#idck").val("yes");
+						} else {
+							$("#msg").text("현재 사용 중인 아이디입니다.");
+						}
+		            })
+		            .fail(function(xhr, status, errorThrown){  //요청 처리에 대한 실패시 처리할 문장
+		                $("#msg").text("아이디 중복 체크를 진행하지 못했습니다.");
+		            })
+		            .always(function(xhr, status){  //요청처리를 실패하든 성공하든 무조건 실행해야 하는 내용 기술 
+		
+		            });					
+					
+					
+				}
+				function joinCheck(f){
+					if(f.pw.value!=f.pw2.value){
+						alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
+						f.pw.focus();
+						return false;
+					}
+					if(f.idck.value!="yes"){
+						alert("아이디 중복 체크를 하지 않으셨습니다.");
+						return false;
+					}
+				}
+				</script>
+				<script>
+				function findAddr() {
+					new daum.Postcode({
+						oncomplete: function(data) {
+							console.log(data);
+							var roadAddr = data.roadAddress;
+							var jibunAddr = data.jibunAddress;
+							document.getElementById("postcode").value = data.zonecode;
+							if(roadAddr !== '') {
+								document.getElementById("addr1").value = roadAddr;				
+							} else if(jibunAddr !== ''){
+								document.getElementById("addr1").value = jibunAddr;
+							}
+							document.getElementById("addr2").focus();
+						}
+					}).open();
+				}
+				</script>
+				<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        </article>
+
+	
+  	</div>
+	<th:block th:insert="common/footer"></th:block>
+
+</div>
+</body>
+</html>

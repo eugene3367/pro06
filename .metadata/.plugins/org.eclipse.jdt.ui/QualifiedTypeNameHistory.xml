@@ -6,4 +6,5 @@
     <fullyQualifiedTypeName name="org.slf4j.Logger"/>
     <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
     <fullyQualifiedTypeName name="com.shop2.myapp.service.UserService"/>
+    <fullyQualifiedTypeName name="com.shop2.myapp.service.BoardService"/>
 </qualifiedTypeNameHistroy>

@@ -33,4 +33,17 @@ visited int default 0
 
 select * FROM user1;
 
+create table board1(
+	seq bigint primary key, 
+	title varchar(100) not null,
+	content varchar(1000) not null, 
+	nickname varchar(20), 
+	regdate date default CURRENT_DATE, 
+	visited int default 0
+);
+
+select * from board1;
+
+
+
 
